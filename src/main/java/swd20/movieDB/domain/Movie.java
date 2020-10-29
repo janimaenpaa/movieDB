@@ -17,7 +17,7 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long movieId;
-	private String title, description, imgUrl;
+	private String title, description, imgUrl, trailerLink;
 	private int publicationYear;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
 	@JsonIgnoreProperties("movie")
@@ -26,13 +26,16 @@ public class Movie {
 	public Movie() {
 	}
 
-	public Movie(long id, String title, int publicationYear, String description, String imgUrl) {
+	public Movie(long movieId, String title, String description, String imgUrl, String trailerLink, int publicationYear,
+			List<Review> reviews) {
 		super();
-		this.movieId = id;
+		this.movieId = movieId;
 		this.title = title;
-		this.publicationYear = publicationYear;
 		this.description = description;
 		this.imgUrl = imgUrl;
+		this.trailerLink = trailerLink;
+		this.publicationYear = publicationYear;
+		this.reviews = reviews;
 	}
 
 	public long getMovieId() {
@@ -65,6 +68,14 @@ public class Movie {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public String getTrailerLink() {
+		return trailerLink;
+	}
+
+	public void setTrailerLink(String trailerLink) {
+		this.trailerLink = trailerLink;
 	}
 
 	public int getPublicationYear() {
