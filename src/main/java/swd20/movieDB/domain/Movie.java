@@ -26,16 +26,13 @@ public class Movie {
 	public Movie() {
 	}
 
-	public Movie(long movieId, String title, String description, String imgUrl, String trailerUrl, int publicationYear,
-			List<Review> reviews) {
+	public Movie(String title, String description, String imgUrl, String trailerUrl, int publicationYear) {
 		super();
-		this.movieId = movieId;
 		this.title = title;
 		this.description = description;
 		this.imgUrl = imgUrl;
 		this.trailerUrl = trailerUrl;
 		this.publicationYear = publicationYear;
-		this.reviews = reviews;
 	}
 
 	public long getMovieId() {
