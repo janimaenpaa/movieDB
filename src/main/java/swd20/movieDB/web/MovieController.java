@@ -35,6 +35,12 @@ public class MovieController {
 		return "movie";
 	}
 
+	@GetMapping("/movies/{id}/delete")
+	public String deleteMovie(@PathVariable("id") long movieId) {
+		movieRepository.deleteById(movieId);
+		return "redirect:/movies";
+	}
+
 	@GetMapping("/movies/new")
 	public String newMovie(Model model) {
 		model.addAttribute("movie", new Movie());
