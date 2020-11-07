@@ -41,6 +41,12 @@ public class MovieController {
 		return "redirect:/movies";
 	}
 
+	@GetMapping("/movies/{id}/edit")
+	public String editMovie(@PathVariable("id") long movieId, Model model) {
+		model.addAttribute("movie", movieRepository.findById(movieId));
+		return "editmovie";
+	}
+
 	@GetMapping("/movies/new")
 	public String newMovie(Model model) {
 		model.addAttribute("movie", new Movie());
