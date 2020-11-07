@@ -1,29 +1,43 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
-<title>MovieDB</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
-	th:href="@{../css/bootstrap.min.css}" />
+	<title>MovieDB</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}" />
 </head>
+
 <body>
-	<div class="container-fluid">
-		<div class="d-flex justify-content-end align-items-center m-2 mr-3">
-			<span th:inline="text" class="mr-2">Hello
-				Admin[[${#httpServletRequest.remoteUser}]]!</span>
-			<form th:action="@{/logout}" method="post">
-				<button type="submit" class="btn btn-dark">Logout</button>
-			</form>
-		</div>
-		<div>
-			<h2 th:text="${movie.title + ' ' + {movie.publicationYear}}">Movie</h2>
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+			<a class="navbar-brand" href="/movies">MovieDB</a>
+			<div class="collapse navbar-collapse" id="navbarColor02">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/movies">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+					<button type="submit" class="btn btn-secondary my-2 my-sm-0">Logout</button>
+				</form>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<h2 th:text="${movie.title + ' (' + {movie.publicationYear} + ')'}">Movie</h2>
+			<div class="d-flex">
+				<button type="button" class="btn btn-primary mr-2">Edit</button>
+				<a th:href="|/movies/${movie.movieId}/delete|" class="btn btn-danger" role="button">Delete</a>
+			</div>
 			<p>
-			<span th:text="${'Description: ' + movie.description}">Description</span>
+			<h5>Description</h5>
+			<span th:text="${movie.description}">Description</span>
 			</p>
 			<h3>Reviews</h3>
 			Reviews will be here...
 		</div>
 	</div>
 </body>
+
 </html>
