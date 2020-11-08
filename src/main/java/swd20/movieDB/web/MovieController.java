@@ -1,5 +1,6 @@
 package swd20.movieDB.web;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import swd20.movieDB.domain.Movie;
 import swd20.movieDB.domain.MovieRepository;
+import swd20.movieDB.domain.Review;
+import swd20.movieDB.domain.ReviewRepository;
 
 @Controller
 public class MovieController {
 
 	@Autowired
 	private MovieRepository movieRepository;
+	@Autowired
+	private ReviewRepository reviewRepository;
 
 	@GetMapping("/movies")
 	public String movieList(Model model) {
@@ -30,6 +35,7 @@ public class MovieController {
 
 		if (movie != null) {
 			model.addAttribute("movie", movie.get());
+			model.addAttribute("reviews", reviewRepository.findByMovie(movie));
 		}
 
 		return "movie";

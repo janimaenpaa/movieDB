@@ -35,7 +35,15 @@
 			<span th:text="${movie.description}">Description</span>
 			</p>
 			<h3>Reviews</h3>
-			Reviews will be here...
+			<div th:each="review : ${reviews}" class="card mt-3">
+				<div class="card-body">
+					<h4 th:text="${review.reviewer}" class="card-title">Reviewer</h4>
+					<h6 th:text="${review.date}" class="card-subtitle text-muted">Special title treatment</h6>
+					<p th:text="${review.description}" class="card-text mt-2">Content</p>
+					<span th:text="${review.rating + '/5 stars'}">Rating</span>
+					<br>
+					<a th:href="|/movies/${movie.movieId}/review/${review.id}/delete|" class="btn btn-danger mt-2" role="button">Delete</a>
+				</div>
 		</div>
 	</div>
 </body>

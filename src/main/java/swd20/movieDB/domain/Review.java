@@ -27,9 +27,8 @@ public class Review {
 	public Review() {
 	}
 
-	public Review(long id, String reviewer, String description, Date date, int rating, Movie movie) {
+	public Review(String reviewer, String description, Date date, int rating, Movie movie) {
 		super();
-		this.id = id;
 		this.reviewer = reviewer;
 		this.description = description;
 		this.date = date;
