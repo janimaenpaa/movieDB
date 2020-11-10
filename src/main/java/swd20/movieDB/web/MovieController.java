@@ -1,6 +1,5 @@
 package swd20.movieDB.web;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import swd20.movieDB.domain.Movie;
 import swd20.movieDB.domain.MovieRepository;
-import swd20.movieDB.domain.Review;
 import swd20.movieDB.domain.ReviewRepository;
 
 @Controller
