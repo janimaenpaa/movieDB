@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 import poster from "../poster.jpg"
 
 const MovieCard = ({ movie }) => (
-  <Card style={{ flex: 1, maxWidth: "30%" }}>
+  <Card style={{ flex: 1, minWidth: "30%", margin: 10 }}>
     <Link style={{ textDecoration: "none" }} to={`/movies/${movie.movieId}`}>
       <Card.Img src={poster} alt="Poster" />
       <Card.Body>
@@ -30,9 +30,7 @@ const MovieList = ({ movies }) => {
 
   return (
     <Container>
-      <CardDeck style={{ display: "flex", flexDirection: "row" }}>
-        {movieRows}
-      </CardDeck>
+      <CardDeck style={{ padding: 20 }}>{movieRows}</CardDeck>
     </Container>
   )
 }

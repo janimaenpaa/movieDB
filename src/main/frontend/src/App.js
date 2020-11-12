@@ -22,7 +22,7 @@ const App = () => {
         <AppBar />
       </>
       <Switch>
-        <Route path="/movie/:id">MoviePage</Route>
+        <Route path="/movies/:id">MoviePage</Route>
         <Route path="/">
           <MovieList movies={movies} />
         </Route>
