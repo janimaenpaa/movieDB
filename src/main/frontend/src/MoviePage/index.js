@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { Card, Container, CardGroup, ListGroup } from "react-bootstrap"
 import { useParams } from "react-router-dom"
+import YouTube from "react-youtube"
 import poster from "../poster.jpg"
 
 const InfoCard = ({ movie }) => {
   return (
     <CardGroup>
-      <Card>
-        <Card.Img src={poster} />
+      <Card style={{ flexGrow: 2 }}>
+        <Card.Img src={poster} style={{ height: "100%" }} />
       </Card>
-      <Card>
+      <Card style={{ flexGrow: 3 }}>
         <Card.Body>
           <Card.Title>
             <h3>
@@ -19,9 +20,10 @@ const InfoCard = ({ movie }) => {
           <Card.Text>
             <span className="h4">Rating 5.0 / 5.0</span>
           </Card.Text>
+          <YouTube videoId={movie.trailerUrl} opts={{ width: "100%"}} />
           <Card.Subtitle
-            style={{ fontSize: 18, color: "#999999" }}
-            className="mb-2"
+            style={{ fontSize: "1rem", color: "#999999" }}
+            className="mt-2 mb-2"
           >
             {movie.description}
           </Card.Subtitle>
