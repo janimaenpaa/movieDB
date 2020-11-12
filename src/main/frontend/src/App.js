@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import "./bootstrap/bootstrap.min.css"
 import AppBar from "./components/AppBar"
 import MovieList from "./MovieList"
+import MoviePage from "./MoviePage"
 
 const App = () => {
   const [movies, setMovies] = useState([])
@@ -22,7 +23,9 @@ const App = () => {
         <AppBar />
       </>
       <Switch>
-        <Route path="/movies/:id">MoviePage</Route>
+        <Route path="/movies/:id">
+          <MoviePage movies={movies} />
+        </Route>
         <Route path="/">
           <MovieList movies={movies} />
         </Route>
