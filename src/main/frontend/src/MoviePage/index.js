@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { Card, Container, CardGroup, ListGroup } from "react-bootstrap"
+import { Card, Container, CardGroup, ListGroup, Badge } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import YouTube from "react-youtube"
 import poster from "../poster.jpg"
+import { averageRating } from "../utils"
 
 const InfoCard = ({ movie }) => {
+  const rating = averageRating(movie.reviews)
   return (
     <CardGroup>
       <Card style={{ flexGrow: 2 }}>
@@ -13,14 +15,16 @@ const InfoCard = ({ movie }) => {
       <Card style={{ flexGrow: 3 }}>
         <Card.Body>
           <Card.Title>
-            <h3>
+            <h3 style={{ color: "#00bc8c" }}>
               {movie.title} ({movie.publicationYear})
             </h3>
           </Card.Title>
           <Card.Text>
-            <span className="h4">Rating 5.0 / 5.0</span>
+            <Badge pill variant="warning p-2">
+              <span style={{ fontSize: 20 }}>{rating} / 5.0</span>
+            </Badge>
           </Card.Text>
-          <YouTube videoId={movie.trailerUrl} opts={{ width: "100%"}} />
+          <YouTube videoId={movie.trailerUrl} opts={{ width: "100%" }} />
           <Card.Subtitle
             style={{ fontSize: "1rem", color: "#999999" }}
             className="mt-2 mb-2"
@@ -35,18 +39,18 @@ const InfoCard = ({ movie }) => {
 
 const ReviewCard = ({ movie }) => {
   const reviewRows = movie.reviews.map((review) => (
-    <ListGroup.Item>
-      {review.reviewer}
-      <br />
-      {review.rating} / 5
-      <br />
-      {review.description}
+    <ListGroup.Item className="d-flex flex-column">
+      <span className="h5">{review.reviewer}</span>
+      <span>{review.rating} / 5</span>
+      <span>{review.description}</span>
     </ListGroup.Item>
   ))
   return (
     <div className="mt-4 mb-4">
-      <h3>Reviews</h3>
       <Card style={{ padding: 20 }}>
+        <Card.Header>
+          <h4>Reviews</h4>
+        </Card.Header>
         <Card.Body>
           <ListGroup variant="flush">{reviewRows}</ListGroup>
         </Card.Body>
