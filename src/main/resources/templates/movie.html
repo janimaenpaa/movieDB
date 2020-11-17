@@ -25,6 +25,7 @@
 			</div>
 		</nav>
 		<div class="container">
+			<img class="mx-auto d-block m-4" th:src="${movie.imgUrl}" height="600"/>
 			<h2 th:text="${movie.title + ' (' + {movie.publicationYear} + ')'}">Movie</h2>
 			<div class="d-flex">
 				<a th:href="|/movies/${movie.movieId}/edit|" class="btn btn-primary mr-2" role="button">Edit</a>

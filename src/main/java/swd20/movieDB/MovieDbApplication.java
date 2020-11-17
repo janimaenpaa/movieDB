@@ -24,23 +24,23 @@ public class MovieDbApplication {
 		return (args) -> {
 			Movie movie1 = new Movie("Joker",
 					"In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.",
-					"https://images-na.ssl-images-amazon.com/images/I/71q-7%2BKrvLL._AC_SL1350_.jpg",
+					"https://moviedb-imageupload.s3.eu-north-1.amazonaws.com/0c1b79c8-43b9-481e-b8c4-598deee60cc3",
 					"zAGVQLHvwOY", 2019);
 			Movie movie2 = new Movie("Tenet",
 					"Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
-					"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzBWDx-ZPxc65uJDGjleNCfIe5t3dQ8j4dnYg5QnhjiPTN4I-Q",
+					"https://moviedb-imageupload.s3.eu-north-1.amazonaws.com/d6a75b11-8878-404a-8678-d26ed6334aff",
 					"AZGcmvrTX9M", 2020);
 			Movie movie3 = new Movie("The King's Speech",
 					"The story of King George VI, his impromptu ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer.",
-					"https://m.media-amazon.com/images/M/MV5BMzU5MjEwMTg2Nl5BMl5BanBnXkFtZTcwNzM3MTYxNA@@._V1_.jpg",
+					"https://moviedb-imageupload.s3.eu-north-1.amazonaws.com/2c7ab309-6d36-4830-9de7-d6e401c0354e",
 					"EcxBrTvLbBM", 2010);
-			Movie movie4 = new Movie("The King's Speech",
-					"The story of King George VI, his impromptu ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer.",
-					"https://m.media-amazon.com/images/M/MV5BMzU5MjEwMTg2Nl5BMl5BanBnXkFtZTcwNzM3MTYxNA@@._V1_.jpg",
-					"EcxBrTvLbBM", 2010);
+			Movie movie4 = new Movie("Inception",
+					"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+					"https://moviedb-imageupload.s3.eu-north-1.amazonaws.com/d143d6ec-1d8e-45a3-9284-dca0cd4c1b09",
+					"fTRnWXXDcL4", 2010);
 			Movie movie5 = new Movie("The King's Speech",
 					"The story of King George VI, his impromptu ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer.",
-					"https://m.media-amazon.com/images/M/MV5BMzU5MjEwMTg2Nl5BMl5BanBnXkFtZTcwNzM3MTYxNA@@._V1_.jpg",
+					"https://moviedb-imageupload.s3.eu-north-1.amazonaws.com/2c7ab309-6d36-4830-9de7-d6e401c0354e",
 					"EcxBrTvLbBM", 2010);
 
 			movieRepository.save(movie1);

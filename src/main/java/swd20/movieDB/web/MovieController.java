@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import swd20.movieDB.aws.AWSS3Service;
 import swd20.movieDB.domain.Movie;
 import swd20.movieDB.domain.MovieRepository;
 import swd20.movieDB.domain.ReviewRepository;
@@ -20,6 +23,8 @@ public class MovieController {
 	private MovieRepository movieRepository;
 	@Autowired
 	private ReviewRepository reviewRepository;
+	@Autowired
+	private AWSS3Service s3Service;
 
 	@GetMapping("/movies")
 	public String movieList(Model model) {
@@ -58,7 +63,16 @@ public class MovieController {
 	}
 
 	@PostMapping("/movies/save")
-	public String saveMovie(Movie movie) {
+	public String saveMovie(@RequestParam("image") MultipartFile image, Movie movie) {
+		String mockPosterUrl = "https://moviedb-imageupload.s3.eu-north-1.amazonaws.com/4d025af0-d350-4e9e-9d03-b15ccec4f195";
+
+		if (!image.isEmpty()) {
+			String uploadedImageUrl = s3Service.uploadImage(image);
+			movie.setImgUrl(uploadedImageUrl);
+		} else {
+			movie.setImgUrl(mockPosterUrl);
+		}
+		
 		movieRepository.save(movie);
 		return "redirect:/movies";
 	}
