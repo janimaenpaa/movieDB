@@ -1,70 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Card, Container, CardGroup, ListGroup, Badge, Button } from "react-bootstrap"
+import {
+  Container
+} from "react-bootstrap"
 import { useParams } from "react-router-dom"
-import YouTube from "react-youtube"
-import { averageRating } from "../utils"
+import InfoCard from "./InfoCard"
 
-const getRating = (rating) => {
-  if (!rating) {
-    return <span style={{ fontSize: 18, padding: 4 }}>No rating</span>
-  }
-
-  return <span style={{ fontSize: 18, padding: 4 }}>{rating} / 5.0</span>
-}
-
-const InfoCard = ({ movie }) => {
-  const rating = averageRating(movie.reviews)
-  return (
-    <CardGroup>
-      <Card style={{ flexGrow: 2 }}>
-        <Card.Img src={movie.imgUrl} style={{ height: "100%" }} />
-      </Card>
-      <Card style={{ flexGrow: 3 }}>
-        <Card.Body>
-          <Card.Title>
-            <h3 style={{ color: "#00bc8c" }}>
-              {movie.title} ({movie.publicationYear})
-            </h3>
-          </Card.Title>
-          <Card.Text>
-            <Badge pill variant="warning">
-              {getRating(rating)}
-            </Badge>
-          </Card.Text>
-          <YouTube videoId={movie.trailerYoutubeId} opts={{ width: "100%" }} />
-          <Card.Subtitle
-            style={{ fontSize: "1rem", color: "#999999" }}
-            className="mt-2 mb-2"
-          >
-            {movie.description}
-          </Card.Subtitle>
-        </Card.Body>
-      </Card>
-    </CardGroup>
-  )
-}
-
-const ReviewCard = ({ movie }) => {
-  const reviewRows = movie.reviews.map((review) => (
-    <ListGroup.Item key={review.id} className="d-flex flex-column">
-      <span className="h5">{review.reviewer}</span>
-      <Button disabled style={{width: "4rem", backgroundColor: "#f39c12", opacity: 100}}>{review.rating} / 5</Button>
-      <span>{review.description}</span>
-    </ListGroup.Item>
-  ))
-  return (
-    <div className="mt-4 mb-4">
-      <Card style={{ padding: 20 }}>
-        <Card.Header>
-          <h4>Reviews</h4>
-        </Card.Header>
-        <Card.Body>
-          <ListGroup variant="flush">{reviewRows}</ListGroup>
-        </Card.Body>
-      </Card>
-    </div>
-  )
-}
+import ReviewCard from "./ReviewCard"
 
 const MoviePage = () => {
   const [movie, setMovie] = useState(null)
