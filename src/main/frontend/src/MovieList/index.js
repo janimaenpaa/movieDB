@@ -1,15 +1,14 @@
 import React from "react"
 import { Badge, Card, CardDeck, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import poster from "../poster.jpg"
 import { averageRating } from "../utils"
 
 const MovieCard = ({ movie }) => {
   const rating = averageRating(movie.reviews)
   return (
-    <Card style={{ flex: 1, minWidth: "30%", margin: 10 }}>
+    <Card style={{ flex: 1, minWidth: "30%", maxWidth: "30%", margin: 10 }}>
       <Link style={{ textDecoration: "none" }} to={`/movies/${movie.movieId}`}>
-        <Card.Img src={poster} alt="Poster" />
+        <Card.Img src={movie.imgUrl} alt="Poster" />
       </Link>
       <Card.Body className="d-flex justify-content-between">
         <div>
@@ -24,7 +23,7 @@ const MovieCard = ({ movie }) => {
           </Card.Subtitle>
         </div>
         <Card.Text
-          style={{ fontSize: 20}}
+          style={{ fontSize: 20 }}
           className="d-flex align-items-center"
         >
           {rating ? (

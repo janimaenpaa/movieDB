@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react"
-import { Card, Container, CardGroup, ListGroup, Badge } from "react-bootstrap"
+import { Card, Container, CardGroup, ListGroup, Badge, Button } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import YouTube from "react-youtube"
-import poster from "../poster.jpg"
 import { averageRating } from "../utils"
+
+const getRating = (rating) => {
+  if (!rating) {
+    return <span style={{ fontSize: 18, padding: 4 }}>No rating</span>
+  }
+
+  return <span style={{ fontSize: 18, padding: 4 }}>{rating} / 5.0</span>
+}
 
 const InfoCard = ({ movie }) => {
   const rating = averageRating(movie.reviews)
   return (
     <CardGroup>
       <Card style={{ flexGrow: 2 }}>
-        <Card.Img src={poster} style={{ height: "100%" }} />
+        <Card.Img src={movie.imgUrl} style={{ height: "100%" }} />
       </Card>
       <Card style={{ flexGrow: 3 }}>
         <Card.Body>
@@ -20,11 +27,11 @@ const InfoCard = ({ movie }) => {
             </h3>
           </Card.Title>
           <Card.Text>
-            <Badge pill variant="warning p-2">
-              <span style={{ fontSize: 20 }}>{rating} / 5.0</span>
+            <Badge pill variant="warning">
+              {getRating(rating)}
             </Badge>
           </Card.Text>
-          <YouTube videoId={movie.trailerUrl} opts={{ width: "100%" }} />
+          <YouTube videoId={movie.trailerYoutubeId} opts={{ width: "100%" }} />
           <Card.Subtitle
             style={{ fontSize: "1rem", color: "#999999" }}
             className="mt-2 mb-2"
@@ -39,9 +46,9 @@ const InfoCard = ({ movie }) => {
 
 const ReviewCard = ({ movie }) => {
   const reviewRows = movie.reviews.map((review) => (
-    <ListGroup.Item className="d-flex flex-column">
+    <ListGroup.Item key={review.id} className="d-flex flex-column">
       <span className="h5">{review.reviewer}</span>
-      <span>{review.rating} / 5</span>
+      <Button disabled style={{width: "4rem", backgroundColor: "#f39c12", opacity: 100}}>{review.rating} / 5</Button>
       <span>{review.description}</span>
     </ListGroup.Item>
   ))
