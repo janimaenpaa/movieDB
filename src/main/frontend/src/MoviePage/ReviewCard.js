@@ -2,7 +2,7 @@ import React from "react"
 import { Card, ListGroup, Button } from "react-bootstrap"
 
 const ReviewCard = ({ movie }) => {
-  const reviewRows = movie.reviews.map((review) => (
+  const reviewRows = movie.map((review) => (
     <ListGroup.Item key={review.id} className="d-flex flex-column">
       <span className="h5">{review.reviewer}</span>
       <Button

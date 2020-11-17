@@ -1,9 +1,5 @@
 import React from "react"
-import {
-    Card,
-    CardGroup,
-    Badge,
-  } from "react-bootstrap"
+import { Card, CardGroup, Badge } from "react-bootstrap"
 import YouTube from "react-youtube"
 import { averageRating } from "../utils"
 
@@ -15,8 +11,7 @@ const getRating = (rating) => {
   return <span style={{ fontSize: 18, padding: 4 }}>{rating} / 5.0</span>
 }
 
-const InfoCard = ({ movie }) => {
-  const rating = averageRating(movie.reviews)
+const InfoCard = ({ movie, rating }) => {
   return (
     <CardGroup>
       <Card style={{ flexGrow: 2 }}>
