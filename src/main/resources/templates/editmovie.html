@@ -1,53 +1,112 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
-<head>
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+  <head>
     <title>MovieDB</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{../../css/bootstrap.min.css}" />
-</head>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/bootstrap.min.css"
+      th:href="@{../../css/bootstrap.min.css}"
+    />
+  </head>
 
-<body>
+  <body>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-            <a class="navbar-brand" href="/movies">MovieDB</a>
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/movies">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
-                    <button type="submit" class="btn btn-secondary my-2 my-sm-0">Logout</button>
-                </form>
-            </div>
-        </nav>
-        <div class="container">
-            <h2>Edit Movie</h2>
-            <form th:object="${movie}" th:action="@{../save}" action="#" method="post">
-                <div class="form-group row">
-                    <input type="hidden" th:field="*{movieId}" class="form-control" />
-                    <label for="title">Title</label>
-                    <input class="form-control mb-2" type="text" id="title" th:field="*{title}" />
-                    <br>
-                    <label for="author">Publication Year</label>
-                    <input class="form-control mb-2" type="text" id="author" th:field="*{publicationYear}" />
-                    <br>
-                    <label for="isbn">Description</label>
-                    <input class="form-control mb-2" type="text" th:field="*{description}" />
-                    <br />
-                    <label for="isbn">Image URL</label>
-                    <input class="form-control mb-2" type="text" th:field="*{imgUrl}" />
-                    <br />
-                    <label for="isbn">Trailer URL</label>
-                    <input class="form-control mb-2" type="text" th:field="*{trailerUrl}" />
-                    <button class="btn btn-success btn-lg btn-block mt-2" type="submit">Save</button>
-                </div>
-            </form>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" href="/movies">MovieDB</a>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/movies"
+                >Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+          <form
+            class="form-inline my-2 my-lg-0"
+            th:action="@{/logout}"
+            method="post"
+          >
+            <button type="submit" class="btn btn-secondary my-2 my-sm-0">
+              Logout
+            </button>
+          </form>
         </div>
+      </nav>
+      <div class="container">
+        <h2>Edit Movie</h2>
+        <form
+          th:object="${movie}"
+          th:action="@{../update}"
+          action="#"
+          method="post"
+        >
+          <div class="d-flex flex-column">
+            <input type="hidden" th:field="*{movieId}" class="form-control" />
+            <label for="title">Title</label>
+            <div
+              style="color: red"
+              th:if="${#fields.hasErrors('title')}"
+              th:errors="*{title}"
+            >
+              Year Error
+            </div>
+            <input
+              class="form-control mb-2"
+              type="text"
+              id="title"
+              th:field="*{title}"
+            />
+            <br />
+            <label for="author">Publication Year</label>
+            <div
+              style="color: red"
+              th:if="${#fields.hasErrors('publicationYear')}"
+              th:errors="*{publicationYear}"
+            >
+              Year Error
+            </div>
+            <input
+              class="form-control mb-2"
+              type="text"
+              id="author"
+              th:field="*{publicationYear}"
+            />
+            <br />
+            <label for="isbn">Description</label>
+            <div
+              style="color: red"
+              th:if="${#fields.hasErrors('description')}"
+              th:errors="*{description}"
+            >
+              Year Error
+            </div>
+            <input
+              class="form-control mb-2"
+              type="text"
+              th:field="*{description}"
+            />
+            <br />
+            <label for="isbn">Image URL</label>
+            <input class="form-control mb-2" type="text" th:field="*{imgUrl}" />
+            <br />
+            <label for="isbn">Trailer YouTube ID</label>
+            <input
+              class="form-control mb-2"
+              type="text"
+              th:field="*{trailerYoutubeId}"
+            />
+            <button class="btn btn-success btn-lg btn-block mt-2" type="submit">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
