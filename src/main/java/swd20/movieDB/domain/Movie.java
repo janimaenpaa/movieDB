@@ -3,6 +3,7 @@ package swd20.movieDB.domain;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,9 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long movieId;
-	private String title, description, imgUrl, trailerUrl;
+	@Column(columnDefinition = "TEXT")
+	private String description;
+	private String title, imgUrl, trailerYoutubeId;
 	private int publicationYear;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
 	@JsonIgnoreProperties("movie")
@@ -26,12 +29,12 @@ public class Movie {
 	public Movie() {
 	}
 
-	public Movie(String title, String description, String imgUrl, String trailerUrl, int publicationYear) {
+	public Movie(String title, String description, String imgUrl, String trailerYoutubeId, int publicationYear) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.imgUrl = imgUrl;
-		this.trailerUrl = trailerUrl;
+		this.trailerYoutubeId = trailerYoutubeId;
 		this.publicationYear = publicationYear;
 	}
 
@@ -67,12 +70,12 @@ public class Movie {
 		this.imgUrl = imgUrl;
 	}
 
-	public String getTrailerUrl() {
-		return trailerUrl;
+	public String getTrailerYoutubeId() {
+		return trailerYoutubeId;
 	}
 
-	public void setTrailerUrl(String trailerUrl) {
-		this.trailerUrl = trailerUrl;
+	public void setTrailerYoutubeId(String trailerYoutubeId) {
+		this.trailerYoutubeId = trailerYoutubeId;
 	}
 
 	public int getPublicationYear() {

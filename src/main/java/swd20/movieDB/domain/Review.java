@@ -2,6 +2,7 @@ package swd20.movieDB.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,9 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String reviewer, description;
+	private String reviewer;
+	@Column(columnDefinition = "TEXT")
+	private String description;
 	private Date date;
 	private int rating;
 	@ManyToOne

@@ -48,16 +48,20 @@ public class MovieDbApplication {
 			movieRepository.save(movie3);
 			movieRepository.save(movie4);
 			movieRepository.save(movie5);
-			
+
 			Review review1 = new Review("John", "A very good movie.", new Date(), 5, movie1);
 			Review review2 = new Review("Jake", "A very interesting movie.", new Date(), 4, movie1);
 			Review review3 = new Review("Adam", "Fantastic.", new Date(), 3, movie2);
 			Review review4 = new Review("Jake", "The best movie ever.", new Date(), 5, movie2);
+			Review review5 = new Review("Jesus",
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in tincidunt erat. Suspendisse ultricies vel urna in auctor. Mauris velit lacus, tristique eget odio sed, congue molestie massa.",
+					new Date(), 5, movie1);
 
 			reviewRepository.save(review1);
 			reviewRepository.save(review2);
 			reviewRepository.save(review3);
 			reviewRepository.save(review4);
+			reviewRepository.save(review5);
 		};
 	}
 
