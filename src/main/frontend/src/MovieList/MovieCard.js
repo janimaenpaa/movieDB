@@ -6,7 +6,7 @@ import { averageRating } from "../utils"
 const MovieCard = ({ movie }) => {
   const rating = averageRating(movie.reviews)
   return (
-    <Card style={{ flex: 1, minWidth: "30%", maxWidth: "30%", margin: 10 }}>
+    <Card style={{ flex: 1, minWidth: "30%", margin: 10 }}>
       <Link style={{ textDecoration: "none" }} to={`/movies/${movie.movieId}`}>
         <Card.Img src={movie.imgUrl} alt="Poster" />
       </Link>

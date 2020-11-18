@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import "./bootstrap/bootstrap.min.css"
 import AppBar from "./components/AppBar"
 import MovieList from "./MovieList"
@@ -12,7 +12,6 @@ const App = () => {
     fetch("http://localhost:8080/api/movies")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setMovies(data)
       })
   }, [])
