@@ -58,7 +58,7 @@ public class MovieController {
 	@GetMapping("/movies/{id}/delete")
 	public String deleteMovie(@PathVariable("id") long movieId) {
 		movieRepository.deleteById(movieId);
-		return "redirect:/movies";
+		return "redirect:/";
 	}
 
 	// Edit movie by id
@@ -93,7 +93,7 @@ public class MovieController {
 		}
 
 		movieRepository.save(movie);
-		return "redirect:/movies";
+		return "redirect:/";
 	}
 
 	// Update a movie
