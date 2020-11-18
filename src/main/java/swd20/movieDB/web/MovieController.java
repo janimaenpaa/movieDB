@@ -26,6 +26,12 @@ public class MovieController {
 	@Autowired
 	private AWSS3Service s3Service;
 
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+
 	@GetMapping("/movies")
 	public String movieList(Model model) {
 		model.addAttribute("movies", movieRepository.findAll());
