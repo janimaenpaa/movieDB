@@ -32,7 +32,7 @@ const MoviePage = () => {
   return (
     <Container>
       <InfoCard movie={movie} rating={movieRating} />
-      <ReviewCard movie={reviews} />
+      <ReviewCard reviews={reviews} />
       <AddReview reviews={reviews} setReviews={setReviews} id={id} />
     </Container>
   )

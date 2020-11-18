@@ -1,8 +1,8 @@
 import React from "react"
 import { Card, ListGroup, Button } from "react-bootstrap"
 
-const ReviewCard = ({ movie }) => {
-  const reviewRows = movie.map((review) => (
+const ReviewCard = ({ reviews }) => {
+  const reviewRows = reviews.map((review) => (
     <ListGroup.Item key={review.id} className="d-flex flex-column">
       <span className="h5">{review.reviewer}</span>
       <Button
@@ -21,7 +21,11 @@ const ReviewCard = ({ movie }) => {
           <h4>Reviews</h4>
         </Card.Header>
         <Card.Body>
-          <ListGroup variant="flush">{reviewRows}</ListGroup>
+          {reviews.length === 0 ? (
+            <div>No reviews yet...</div>
+          ) : (
+            <ListGroup variant="flush">{reviewRows}</ListGroup>
+          )}
         </Card.Body>
       </Card>
     </div>
