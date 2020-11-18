@@ -35,7 +35,7 @@ public class MovieController {
 	}
 
 	// See all movies
-	@GetMapping("/movies")
+	@GetMapping("/")
 	public String movieList(Model model) {
 		model.addAttribute("movies", movieRepository.findAll());
 		return "movies";
