@@ -16,7 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/**", "/public", "/").permitAll().and().authorizeRequests().anyRequest()
+        http.authorizeRequests().antMatchers("/css/**", "/public", "/", "/api/**").permitAll().and().authorizeRequests().anyRequest()
                 .authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/movies").permitAll().and()
                 .logout().permitAll();
     }

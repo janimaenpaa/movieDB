@@ -9,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,10 +22,23 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long movieId;
+
+	@NotNull
+	@Size(min = 1, max = 500, message = "Description must be between 1 and 500 characters")
 	@Column(columnDefinition = "TEXT")
 	private String description;
-	private String title, imgUrl, trailerYoutubeId;
+
+	@NotNull
+	@Size(min = 1, max = 100, message = "Title must be between 1 and 100 characters")
+	private String title;
+
+	private String imgUrl, trailerYoutubeId;
+
+	@NotNull
+	@Min(value = 1850, message = "The year must be higher than 1849")
+	@Max(value = 2021, message = "The year must be lower than 2022")
 	private int publicationYear;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
 	@JsonIgnoreProperties("movie")
 	private List<Review> reviews;

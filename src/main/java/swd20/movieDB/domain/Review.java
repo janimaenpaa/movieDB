@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,11 +21,23 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+
+	@NotNull
+	@Size(min = 2, max = 80, message = "Reviewer must be between 1 and 80 characters")
 	private String reviewer;
+	
+	@NotNull
+	@Size(min = 10, max = 400, message = "Review must be between 10 and 400 characters")
 	@Column(columnDefinition = "TEXT")
 	private String description;
+
 	private Date date;
+
+	@NotNull
+	@Min(value = 1, message = "Rating can't be lower than 1")
+	@Max(value = 5, message = "Rating can't be higher than 5")
 	private int rating;
+	
 	@ManyToOne
 	@JsonIgnoreProperties("reviews")
 	@JoinColumn(name = "movieId")
