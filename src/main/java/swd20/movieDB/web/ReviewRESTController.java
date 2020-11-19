@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import swd20.movieDB.domain.Movie;
@@ -16,7 +18,7 @@ import swd20.movieDB.domain.MovieRepository;
 import swd20.movieDB.domain.Review;
 import swd20.movieDB.domain.ReviewRepository;
 
-@CrossOrigin()
+@CrossOrigin
 @RestController
 public class ReviewRESTController {
 
@@ -41,7 +43,7 @@ public class ReviewRESTController {
         return (List<Review>) reviewRepository.findByMovie(movie);
     }
 
-    @PostMapping("/api/movies/{id}/reviews")
+    @PostMapping(value = "/api/movies/{id}/reviews")
     public Review saveReview(@PathVariable("id") long id, @RequestBody Review review) {
         Movie movie = movieRepository.findById(id).orElse(null);
         review.setMovie(movie);
