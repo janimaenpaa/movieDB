@@ -36,6 +36,12 @@ public class ReviewRESTController {
     }
 
     @PostMapping("/api/movies/{id}/reviews")
+    public List<Review> getReviewsByMovie(@PathVariable("id") long id) {
+        Optional<Movie> movie = movieRepository.findById(id);
+        return (List<Review>) reviewRepository.findByMovie(movie);
+    }
+
+    @PostMapping("/api/movies/{id}/reviews")
     public Review saveReview(@PathVariable("id") long id, @RequestBody Review review) {
         Movie movie = movieRepository.findById(id).orElse(null);
         review.setMovie(movie);
