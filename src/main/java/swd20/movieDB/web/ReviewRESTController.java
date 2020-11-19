@@ -16,7 +16,7 @@ import swd20.movieDB.domain.MovieRepository;
 import swd20.movieDB.domain.Review;
 import swd20.movieDB.domain.ReviewRepository;
 
-@CrossOrigin(origins = "https://swd20-moviedb-frontend.herokuapp.com/")
+@CrossOrigin()
 @RestController
 public class ReviewRESTController {
 
@@ -41,7 +41,6 @@ public class ReviewRESTController {
         return (List<Review>) reviewRepository.findByMovie(movie);
     }
 
-    @CrossOrigin
     @PostMapping("/api/movies/{id}/reviews")
     public Review saveReview(@PathVariable("id") long id, @RequestBody Review review) {
         Movie movie = movieRepository.findById(id).orElse(null);
