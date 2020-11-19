@@ -21,11 +21,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/css/**", "/public", "/api/**").permitAll().and().authorizeRequests()
-				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
-				.and().logout().permitAll();
+		http.authorizeRequests().antMatchers("/css/**", "/public", "/api/**").permitAll().and()
+				.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.defaultSuccessUrl("/").permitAll().and().logout().permitAll();
 
-		http.csrf().disable();
+				http.csrf().disable(); 
 	}
 
 	@Bean
@@ -35,19 +35,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		return new InMemoryUserDetailsManager(user);
 	}
-	/*
-	 * @Bean CorsConfigurationSource corsConfigurationSource() { CorsConfiguration
-	 * configuration = new CorsConfiguration();
-	 * configuration.setAllowedOrigins(Arrays.asList(
-	 * "https://swd20-moviedb-frontend.herokuapp.com", "http://localhost:3000"));
-	 * configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE",
-	 * "HEAD", "OPTIONS"));
-	 * configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers",
-	 * "Access-Control-Allow-Origin", "Access-Control-Request-Method",
-	 * "Access-Control-Request-Headers", "Origin", "Cache-Control",
-	 * "Content-Type")); final UrlBasedCorsConfigurationSource source = new
-	 * UrlBasedCorsConfigurationSource(); source.registerCorsConfiguration("/**",
-	 * configuration); return source; }
-	 */
+
+	@Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("https://swd20-moviedb-frontend.herokuapp.com", "http://localhost:3000"));
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"));
+		configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Access-Control-Allow-Origin",
+				"Access-Control-Request-Method", "Access-Control-Request-Headers", "Origin", "Cache-Control",
+				"Content-Type"));
+		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 
 }

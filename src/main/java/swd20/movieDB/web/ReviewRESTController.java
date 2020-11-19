@@ -1,5 +1,6 @@
 package swd20.movieDB.web;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +48,7 @@ public class ReviewRESTController {
     public Review saveReview(@PathVariable("id") long id, @RequestBody Review review) {
         Movie movie = movieRepository.findById(id).orElse(null);
         review.setMovie(movie);
+        review.setDate(new Date());
         return reviewRepository.save(review);
     }
 
