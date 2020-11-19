@@ -19,6 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/css/**", "/public", "/api/**").permitAll().and().authorizeRequests()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
 				.and().logout().permitAll();
+		http.cors();
 	}
 
 	@Bean
