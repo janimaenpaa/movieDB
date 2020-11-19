@@ -41,6 +41,7 @@ public class ReviewRESTController {
         return (List<Review>) reviewRepository.findByMovie(movie);
     }
 
+    @CrossOrigin
     @PostMapping("/api/movies/{id}/reviews")
     public Review saveReview(@PathVariable("id") long id, @RequestBody Review review) {
         Movie movie = movieRepository.findById(id).orElse(null);
