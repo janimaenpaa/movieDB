@@ -16,7 +16,7 @@ import swd20.movieDB.domain.MovieRepository;
 import swd20.movieDB.domain.Review;
 import swd20.movieDB.domain.ReviewRepository;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://swd20-moviedb-frontend.herokuapp.com/")
 @RestController
 public class ReviewRESTController {
 
