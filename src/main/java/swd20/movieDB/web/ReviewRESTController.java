@@ -35,7 +35,7 @@ public class ReviewRESTController {
         return reviewRepository.findById(id);
     }
 
-    @PostMapping("/api/movies/{id}/reviews")
+    @GetMapping("/api/movies/{id}/reviews")
     public List<Review> getReviewsByMovie(@PathVariable("id") long id) {
         Optional<Movie> movie = movieRepository.findById(id);
         return (List<Review>) reviewRepository.findByMovie(movie);
