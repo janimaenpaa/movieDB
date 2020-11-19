@@ -7,12 +7,14 @@ import MoviePage from "./MoviePage"
 
 const App = () => {
   const [movies, setMovies] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch("http://localhost:8080/api/movies")
       .then((response) => response.json())
       .then((data) => {
         setMovies(data)
+        setIsLoading(false)
       })
   }, [])
 
@@ -21,6 +23,7 @@ const App = () => {
       <>
         <AppBar />
       </>
+      {isLoading && <div>Loading...</div>}
       <Switch>
         <Route path="/movies/:id">
           <MoviePage movies={movies} />
