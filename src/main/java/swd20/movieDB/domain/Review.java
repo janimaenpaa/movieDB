@@ -12,12 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import org.springframework.lang.Nullable;
 
 @Entity
 public class Review {
@@ -28,7 +25,7 @@ public class Review {
 	@NotNull
 	@Size(min = 2, max = 80, message = "Reviewer must be between 1 and 80 characters")
 	private String reviewer;
-	
+
 	@NotNull
 	@Size(min = 10, max = 400, message = "Review must be between 10 and 400 characters")
 	@Column(columnDefinition = "TEXT")
@@ -40,7 +37,7 @@ public class Review {
 	@Min(value = 1, message = "Rating can't be lower than 1")
 	@Max(value = 5, message = "Rating can't be higher than 5")
 	private int rating;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("reviews")
 	@JoinColumn(name = "movieId")
