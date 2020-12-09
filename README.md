@@ -1,5 +1,7 @@
 # movieDB
 
+![img](moviedb.gif)
+
 movieDB is a fullstack application made with Java Spring Boot and React.js and AWS S3. The app works as a database for movies where they can be rated by users. 
 Movies can be viewed, added, deleted and updated from admin. In the frontend users can view the movies and review them.
 
